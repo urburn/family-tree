@@ -1,31 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Family Tree — McGinley Family</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .tree-wrap { background: #fff; border: 1px solid #d4c9b0; border-radius: 4px; overflow: hidden; }
-    .tree-svg-container { overflow: auto; cursor: grab; }
-    .tree-svg-container:active { cursor: grabbing; }
-    svg text { user-select: none; }
+    .tree-wrap {
+      background: #fff;
+      border: 1px solid #d4c9b0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
 
-    .person-node { cursor: pointer; }
+    .tree-svg-container {
+      overflow: auto;
+      cursor: grab;
+    }
+
+    .tree-svg-container:active {
+      cursor: grabbing;
+    }
+
+    svg text {
+      user-select: none;
+    }
+
+    .person-node {
+      cursor: pointer;
+    }
+
     .person-node rect {
-      rx: 6; ry: 6;
+      rx: 6;
+      ry: 6;
       stroke-width: 1.5;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
       transition: filter 0.2s;
     }
-    .person-node:hover rect { filter: drop-shadow(0 3px 8px rgba(0,0,0,0.3)); }
-    .person-node .p-name { font-family: Georgia, serif; font-weight: bold; font-size: 11.5px; }
-    .person-node .p-dates { font-family: Georgia, serif; font-size: 9.5px; fill: #555; }
-    .person-node .p-occ { font-family: Georgia, serif; font-size: 9px; fill: #777; font-style: italic; }
 
-    .edge { fill: none; stroke: #8aaa88; stroke-width: 1.5; }
-    .marriage-line { fill: none; stroke: #c9a84c; stroke-width: 1.5; stroke-dasharray: 5,3; }
-    .couple-bracket { fill: none; stroke: #c9a84c; stroke-width: 2; }
+    .person-node:hover rect {
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    .person-node .p-name {
+      font-family: Georgia, serif;
+      font-weight: bold;
+      font-size: 11.5px;
+    }
+
+    .person-node .p-dates {
+      font-family: Georgia, serif;
+      font-size: 9.5px;
+      fill: #555;
+    }
+
+    .person-node .p-occ {
+      font-family: Georgia, serif;
+      font-size: 9px;
+      fill: #777;
+      font-style: italic;
+    }
+
+    .edge {
+      fill: none;
+      stroke: #8aaa88;
+      stroke-width: 1.5;
+    }
+
+    .marriage-line {
+      fill: none;
+      stroke: #c9a84c;
+      stroke-width: 1.5;
+      stroke-dasharray: 5, 3;
+    }
+
+    .couple-bracket {
+      fill: none;
+      stroke: #c9a84c;
+      stroke-width: 2;
+    }
 
     #info-panel {
       background: var(--green-dark);
@@ -39,343 +93,386 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
-    #info-panel .info-name { font-size: 1.1rem; color: var(--gold-light); font-weight: bold; }
-    #info-panel .info-detail { color: #ccc; line-height: 1.6; }
-    #info-panel .info-placeholder { color: #8aaa8a; font-style: italic; }
-    .legend {
-      display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 0.8rem;
-      font-size: 0.82rem; color: var(--text-mid); align-items: center;
+
+    #info-panel .info-name {
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      font-weight: bold;
     }
-    .legend-item { display: flex; align-items: center; gap: 0.35rem; }
-    .legend-box { width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #888; }
+
+    #info-panel .info-detail {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    #info-panel .info-placeholder {
+      color: #8aaa8a;
+      font-style: italic;
+    }
+
+    .legend {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      align-items: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .legend-box {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1.5px solid #888;
+    }
   </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a class="brand" href="index.html">⚜ McGinley Family</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="family-tree.html" class="active">Family Tree</a></li>
-      <li><a href="ancestors.html">Ancestors</a></li>
-      <li><a href="deploy.html">Publish Site</a></li>
-    </ul>
-  </div>
-</nav>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html">⚜ McGinley Family</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="family-tree.html" class="active">Family Tree</a></li>
+        <li><a href="ancestors.html">Ancestors</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="hero" style="padding:2rem 1.5rem;">
-  <h1 style="font-size:2rem;">The McGinley Family Tree</h1>
-  <p class="subtitle">Centred on Maurice &amp; Henrietta McGinley — married Vancouver, 1927</p>
-</div>
-
-<div class="container">
-  <div class="tree-controls">
-    <button onclick="zoomIn()">＋ Zoom In</button>
-    <button onclick="zoomOut()">－ Zoom Out</button>
-    <button onclick="resetView()">⌂ Reset</button>
-    <span>Click a person to see details · Scroll to zoom · Drag to pan</span>
+  <div class="hero" style="padding:2rem 1.5rem;">
+    <h1 style="font-size:2rem;">The McGinley Family Tree</h1>
+    <p class="subtitle">Centred on Maurice &amp; Henrietta McGinley — married Vancouver, 1927</p>
   </div>
 
-  <div class="legend">
-    <div class="legend-item"><div class="legend-box" style="background:#dff0d8;border-color:#4a7c59;"></div> Male</div>
-    <div class="legend-item"><div class="legend-box" style="background:#f9e8e4;border-color:#a05040;"></div> Female</div>
-    <div class="legend-item"><div class="legend-box" style="background:#ede4d0;border-color:#c9a84c;"></div> Couple (central)</div>
-    <div class="legend-item" style="gap:0.5rem;">
-      <svg width="30" height="10"><line x1="0" y1="5" x2="30" y2="5" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="5,3"/></svg>
-      Marriage
+  <div class="container">
+    <div class="tree-controls">
+      <button onclick="zoomIn()">＋ Zoom In</button>
+      <button onclick="zoomOut()">－ Zoom Out</button>
+      <button onclick="resetView()">⌂ Reset</button>
+      <span>Click a person to see details · Scroll to zoom · Drag to pan</span>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-box" style="background:#dff0d8;border-color:#4a7c59;"></div> Male
+      </div>
+      <div class="legend-item">
+        <div class="legend-box" style="background:#f9e8e4;border-color:#a05040;"></div> Female
+      </div>
+      <div class="legend-item">
+        <div class="legend-box" style="background:#ede4d0;border-color:#c9a84c;"></div> Couple (central)
+      </div>
+      <div class="legend-item" style="gap:0.5rem;">
+        <svg width="30" height="10">
+          <line x1="0" y1="5" x2="30" y2="5" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="5,3" />
+        </svg>
+        Marriage
+      </div>
+    </div>
+
+    <div class="tree-wrap">
+      <div class="tree-svg-container" id="svgContainer">
+        <svg id="treeSvg"></svg>
+      </div>
+      <div id="info-panel">
+        <span class="info-placeholder">Click on any person in the tree to see their details here.</span>
+      </div>
+    </div>
+
+    <div
+      style="margin-top:1.5rem; padding:1rem; background:#f0f7f2; border:1px solid var(--green-light); border-radius:4px; font-size:0.88rem; color:var(--text-mid);">
+      <strong style="color:var(--green-dark);">About the tree:</strong> This tree spans five generations centred on
+      Grandfather Maurice McGinley (b. 1902, Widnes) and Grandmother Henrietta Teresa Tall (b. 1900, Lerwick). The
+      Stephen branch on the left traces the family back to the Trafalgar era. Some later-generation spouses and children
+      are abbreviated for clarity; full details are in the <a href="ancestors.html"
+        style="color:var(--green-mid);">Ancestors</a> section.
     </div>
   </div>
 
-  <div class="tree-wrap">
-    <div class="tree-svg-container" id="svgContainer">
-      <svg id="treeSvg"></svg>
-    </div>
-    <div id="info-panel">
-      <span class="info-placeholder">Click on any person in the tree to see their details here.</span>
-    </div>
-  </div>
+  <footer>
+    <div class="footer-brand">The McGinley Family</div>
+    <div>Ireland · Scotland · England · Canada · Australia · South Africa</div>
+  </footer>
 
-  <div style="margin-top:1.5rem; padding:1rem; background:#f0f7f2; border:1px solid var(--green-light); border-radius:4px; font-size:0.88rem; color:var(--text-mid);">
-    <strong style="color:var(--green-dark);">About the tree:</strong> This tree spans five generations centred on Grandfather Maurice McGinley (b. 1902, Widnes) and Grandmother Henrietta Teresa Tall (b. 1900, Lerwick). The Stephen branch on the left traces the family back to the Trafalgar era. Some later-generation spouses and children are abbreviated for clarity; full details are in the <a href="ancestors.html" style="color:var(--green-mid);">Ancestors</a> section.
-  </div>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script>
+    // ─── FAMILY DATA ─────────────────────────────────────────────────────────────
+    // Each person: id, name, born, died, place, occ, gender, notes
+    // Couples: represented as pair nodes + marriage lines
 
-<footer>
-  <div class="footer-brand">The McGinley Family</div>
-  <div>Ireland · Scotland · England · Canada · Australia · South Africa</div>
-</footer>
+    const people = [
+      // === GENERATION 0 (earliest) ===
+      { id: 'george_stephen_sr', name: 'George Stephen', born: 'c.1770s', died: '', place: 'Scotland', occ: 'Trafalgar Veteran (1805)', gender: 'm', notes: 'Served with Lord Nelson; lost an eye at the Battle of Trafalgar.' },
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script>
-// ─── FAMILY DATA ─────────────────────────────────────────────────────────────
-// Each person: id, name, born, died, place, occ, gender, notes
-// Couples: represented as pair nodes + marriage lines
+      // === GENERATION 1 ===
+      { id: 'james_stephen', name: 'James Stephen', born: '1805', died: '1887', place: 'Peterhead', occ: 'Shipbuilder & Fish Curer', gender: 'm', notes: 'Born 15 May 1805. Married Ann Cordiner 16 Feb 1828.' },
+      { id: 'ann_cordiner', name: 'Ann Cordiner', born: '1806', died: '1891', place: 'Scotland', occ: '', gender: 'f', notes: 'Born 22 Nov 1806. Married James Stephen 1828.' },
+      { id: 'ayling_tall', name: 'Ayling Tall', born: 'c.1830s', died: '', place: 'England', occ: '', gender: 'm', notes: 'Great Great Grandfather. Married Louisa Gibbeson, daughter of Gunner Warrant Officer Gibbeson of Plymouth.' },
+      { id: 'louisa_gibbeson', name: 'Louisa Gibbeson', born: '', died: '', place: 'Plymouth, England', occ: '', gender: 'f', notes: 'Daughter of Gunner Warrant Officer Gibbeson of Plymouth, England.' },
+      { id: 'maurice_mcginley_sr', name: 'Maurice McGinley', born: 'c.1850s', died: '', place: 'Dundork, Ireland', occ: '', gender: 'm', notes: 'Great Great Grandfather. Born at Dundork, near Dublin, Ireland. Moved to Lancashire, England. Children: Vincent, Mary Agnes, Francis, Margaret & Winifred.' },
 
-const people = [
-  // === GENERATION 0 (earliest) ===
-  { id: 'george_stephen_sr', name: 'George Stephen', born: 'c.1770s', died: '', place: 'Scotland', occ: 'Trafalgar Veteran (1805)', gender: 'm', notes: 'Served with Lord Nelson; lost an eye at the Battle of Trafalgar.' },
+      // === GENERATION 2 ===
+      { id: 'robert_stephen', name: 'Robert Stephen', born: '1841', died: '1928', place: 'Boddam, Scotland', occ: 'Shipbuilder, Inventor, Rancher', gender: 'm', notes: 'Born Boddam, Scotland, 2 Aug 1841. Died Jan 3, 1928. Pioneer in NW Territories Canada 1902. Builder of Bar S Ranch. Fish Curer, Boat Builder, Inventor, Ferry-man.' },
+      { id: 'alice_west', name: 'Alicia (Alice) West', born: '1846', died: '1917', place: 'Portsoy, Scotland', occ: '', gender: 'f', notes: 'Born Portsoy, Scotland, 28 Aug 1846. Died 1917, Vancouver, B.C. Married Robert Stephen in Muchalls, 6 Apr 1868. 12 children.' },
+      { id: 'william_tall', name: 'William Tall', born: '1866', died: '1939', place: 'Lytham, Lancaster', occ: 'Sailor, Royal Navy, Yeoman of Signals', gender: 'm', notes: 'Born 19 Feb 1866, parish of Lytham, Lancaster, England. Died 1939, Vancouver B.C. Married Henrietta Stephen in Peterhead, Scotland, 17 Oct 1895.' },
+      { id: 'henrietta_stephen_tall', name: 'Henrietta (Ettie) Stephen', born: '1874', died: '1948', place: 'Peterhead, Scotland', occ: '', gender: 'f', notes: 'Born 1874, Peterhead, Scotland. Died 1948, Vancouver B.C. Daughter of Robert & Alice Stephen. Married William Tall 1895.' },
+      { id: 'francis_mcginley', name: 'Francis McGinley', born: 'c.1875', died: '', place: 'Lancashire, England', occ: '', gender: 'm', notes: 'Great Grandfather. Married Mary Agnes Wynne (Marian) on 4 Sept 1901 at St. Marie\'s R.C. Church, Widnes, Lancashire. 7 children.' },
+      { id: 'mary_wynne', name: 'Mary Agnes Wynne', born: 'c.1878', died: '', place: 'Widnes, England', occ: '', gender: 'f', notes: '"Marian." Married Francis McGinley 4 Sept 1901, Widnes, Lancashire. 7 children together.' },
 
-  // === GENERATION 1 ===
-  { id: 'james_stephen', name: 'James Stephen', born: '1805', died: '1887', place: 'Peterhead', occ: 'Shipbuilder & Fish Curer', gender: 'm', notes: 'Born 15 May 1805. Married Ann Cordiner 16 Feb 1828.' },
-  { id: 'ann_cordiner', name: 'Ann Cordiner', born: '1806', died: '1891', place: 'Scotland', occ: '', gender: 'f', notes: 'Born 22 Nov 1806. Married James Stephen 1828.' },
-  { id: 'ayling_tall', name: 'Ayling Tall', born: 'c.1830s', died: '', place: 'England', occ: '', gender: 'm', notes: 'Great Great Grandfather. Married Louisa Gibbeson, daughter of Gunner Warrant Officer Gibbeson of Plymouth.' },
-  { id: 'louisa_gibbeson', name: 'Louisa Gibbeson', born: '', died: '', place: 'Plymouth, England', occ: '', gender: 'f', notes: 'Daughter of Gunner Warrant Officer Gibbeson of Plymouth, England.' },
-  { id: 'maurice_mcginley_sr', name: 'Maurice McGinley', born: 'c.1850s', died: '', place: 'Dundork, Ireland', occ: '', gender: 'm', notes: 'Great Great Grandfather. Born at Dundork, near Dublin, Ireland. Moved to Lancashire, England. Children: Vincent, Mary Agnes, Francis, Margaret & Winifred.' },
+      // === GENERATION 3 (grandparents) ===
+      { id: 'henrietta_tall', name: 'Henrietta Teresa Tall', born: '1900', died: '1990', place: 'Lerwick, Shetland Islands', occ: '', gender: 'f', notes: 'Born 29 Apr 1900, Lerwick, Shetland Islands, Scotland. Died 1990, Vancouver B.C. Married Maurice McGinley 16 Aug 1927 at Our Lady of Perpetual Help parish, Vancouver.' },
+      { id: 'maurice_mcginley', name: 'Maurice McGinley', born: '1902', died: '1997', place: 'Widnes, Lancashire', occ: 'Accountant', gender: 'm', notes: 'Born 30 Nov 1902, Widnes, Lancashire, England. Died 1997. Married Henrietta Teresa Tall, 16 Aug 1927, Vancouver B.C.' },
 
-  // === GENERATION 2 ===
-  { id: 'robert_stephen', name: 'Robert Stephen', born: '1841', died: '1928', place: 'Boddam, Scotland', occ: 'Shipbuilder, Inventor, Rancher', gender: 'm', notes: 'Born Boddam, Scotland, 2 Aug 1841. Died Jan 3, 1928. Pioneer in NW Territories Canada 1902. Builder of Bar S Ranch. Fish Curer, Boat Builder, Inventor, Ferry-man.' },
-  { id: 'alice_west', name: 'Alicia (Alice) West', born: '1846', died: '1917', place: 'Portsoy, Scotland', occ: '', gender: 'f', notes: 'Born Portsoy, Scotland, 28 Aug 1846. Died 1917, Vancouver, B.C. Married Robert Stephen in Muchalls, 6 Apr 1868. 12 children.' },
-  { id: 'william_tall', name: 'William Tall', born: '1866', died: '1939', place: 'Lytham, Lancaster', occ: 'Sailor, Royal Navy, Yeoman of Signals', gender: 'm', notes: 'Born 19 Feb 1866, parish of Lytham, Lancaster, England. Died 1939, Vancouver B.C. Married Henrietta Stephen in Peterhead, Scotland, 17 Oct 1895.' },
-  { id: 'henrietta_stephen_tall', name: 'Henrietta (Ettie) Stephen', born: '1874', died: '1948', place: 'Peterhead, Scotland', occ: '', gender: 'f', notes: 'Born 1874, Peterhead, Scotland. Died 1948, Vancouver B.C. Daughter of Robert & Alice Stephen. Married William Tall 1895.' },
-  { id: 'francis_mcginley', name: 'Francis McGinley', born: 'c.1875', died: '', place: 'Lancashire, England', occ: '', gender: 'm', notes: 'Great Grandfather. Married Mary Agnes Wynne (Marian) on 4 Sept 1901 at St. Marie\'s R.C. Church, Widnes, Lancashire. 7 children.' },
-  { id: 'mary_wynne', name: 'Mary Agnes Wynne', born: 'c.1878', died: '', place: 'Widnes, England', occ: '', gender: 'f', notes: '"Marian." Married Francis McGinley 4 Sept 1901, Widnes, Lancashire. 7 children together.' },
+      // === GENERATION 3 SIBLINGS (children of Robert & Alice Stephen) ===
+      { id: 'alice_stephen', name: 'Alice Louise Stephen', born: '1870', died: '1950', place: '', occ: '', gender: 'f', notes: 'Born 1870. Died 1950, Australia.' },
+      { id: 'susan_ann_stephen', name: 'Susan Ann Stephen', born: '1872', died: '1960', place: 'Peterhead, Scotland', occ: 'M.B.E.', gender: 'f', notes: 'Born 1872. Died 1960, South Africa. M.B.E. Married D.D.C. Murray. Established Red Cross stations throughout South Africa in WWI. Honoured by the Queen.' },
+      { id: 'james_garden_stephen', name: 'James Garden Stephen', born: '1876', died: '1949', place: '', occ: '', gender: 'm', notes: 'Born 1876. Died 1949, Vancouver B.C.' },
+      { id: 'agnes_jane_stephen', name: 'Agnes Jane (Jean) Stephen', born: '1880', died: '1956', place: '', occ: '', gender: 'f', notes: 'Born 1880. Died 1956, South Africa.' },
 
-  // === GENERATION 3 (grandparents) ===
-  { id: 'henrietta_tall', name: 'Henrietta Teresa Tall', born: '1900', died: '1990', place: 'Lerwick, Shetland Islands', occ: '', gender: 'f', notes: 'Born 29 Apr 1900, Lerwick, Shetland Islands, Scotland. Died 1990, Vancouver B.C. Married Maurice McGinley 16 Aug 1927 at Our Lady of Perpetual Help parish, Vancouver.' },
-  { id: 'maurice_mcginley', name: 'Maurice McGinley', born: '1902', died: '1997', place: 'Widnes, Lancashire', occ: 'Accountant', gender: 'm', notes: 'Born 30 Nov 1902, Widnes, Lancashire, England. Died 1997. Married Henrietta Teresa Tall, 16 Aug 1927, Vancouver B.C.' },
+      // === GENERATION 4 (parents) ===
+      { id: 'francis_george', name: 'Francis George McGinley', born: '1929', died: '', place: 'Vancouver, B.C.', occ: 'Lawyer', gender: 'm', notes: 'Born 25 Apr 1929, Vancouver B.C. Lawyer. Married Barbara Flaten, 1956, Vancouver B.C.' },
+      { id: 'barbara_flaten', name: 'Barbara Flaten', born: '1930', died: '', place: 'Vancouver, B.C.', occ: 'Legal Secretary', gender: 'f', notes: 'Born 1930, Vancouver B.C. Legal Secretary. Married Francis George McGinley 1956, Vancouver B.C.' },
+      { id: 'gerry_mcginley', name: 'Maurice Gerrard (Gerry) McGinley', born: '1931', died: '1998', place: 'Vancouver, B.C.', occ: 'University Executive', gender: 'm', notes: 'Born 19 Sept 1931, Vancouver B.C. Died 1998, Calgary, Alberta. University Executive. Married Catherine Carroll McNamara, 1961, Vancouver B.C.' },
+      { id: 'catherine_mcnamara', name: 'Catherine Carroll McNamara', born: '1935', died: '', place: 'Sydney, Australia', occ: 'Physiotherapist', gender: 'f', notes: 'Born 1935, Sydney, Australia. Physiotherapist. Married Maurice Gerrard McGinley, 1961, Vancouver B.C.' },
 
-  // === GENERATION 3 SIBLINGS (children of Robert & Alice Stephen) ===
-  { id: 'alice_stephen', name: 'Alice Louise Stephen', born: '1870', died: '1950', place: '', occ: '', gender: 'f', notes: 'Born 1870. Died 1950, Australia.' },
-  { id: 'susan_ann_stephen', name: 'Susan Ann Stephen', born: '1872', died: '1960', place: 'Peterhead, Scotland', occ: 'M.B.E.', gender: 'f', notes: 'Born 1872. Died 1960, South Africa. M.B.E. Married D.D.C. Murray. Established Red Cross stations throughout South Africa in WWI. Honoured by the Queen.' },
-  { id: 'james_garden_stephen', name: 'James Garden Stephen', born: '1876', died: '1949', place: '', occ: '', gender: 'm', notes: 'Born 1876. Died 1949, Vancouver B.C.' },
-  { id: 'agnes_jane_stephen', name: 'Agnes Jane (Jean) Stephen', born: '1880', died: '1956', place: '', occ: '', gender: 'f', notes: 'Born 1880. Died 1956, South Africa.' },
+      // === GENERATION 5 — children of Francis George ===
+      { id: 'sharon_ann', name: 'Sharon Ann McGinley', born: '1956', died: '', place: 'Vancouver, B.C.', occ: 'Recreation Programmer', gender: 'f', notes: 'Born 1956, Vancouver B.C. Recreation Programmer. Married John Arthur Nevison, 1981, Vancouver B.C. Children: Morgan James (1983), Melissa Louise (1985), Tegan Ann (1991).' },
+      { id: 'william_mark', name: 'William Mark McGinley', born: '1958', died: '', place: 'Vancouver, B.C.', occ: 'Professor, Structural Engineering', gender: 'm', notes: 'Born 1958, Vancouver B.C. Professor of Structural Engineering. Married Deborah Ann Theresa Brousseau, 1980, Edmonton. Children: David Mark George (1984), James Mark David (1988), Michael Mark James (1992).' },
+      { id: 'robert_mcginley', name: 'Robert McGinley', born: '1960', died: '', place: 'Vancouver, B.C.', occ: 'Retail Clerk', gender: 'm', notes: 'Born 1960, Vancouver B.C. Retail Clerk. Married Constance Lynn Demchuk, 1984, Vancouver B.C. Children: Scott (1988), Stuart (1992).' },
 
-  // === GENERATION 4 (parents) ===
-  { id: 'francis_george', name: 'Francis George McGinley', born: '1929', died: '', place: 'Vancouver, B.C.', occ: 'Lawyer', gender: 'm', notes: 'Born 25 Apr 1929, Vancouver B.C. Lawyer. Married Barbara Flaten, 1956, Vancouver B.C.' },
-  { id: 'barbara_flaten', name: 'Barbara Flaten', born: '1930', died: '', place: 'Vancouver, B.C.', occ: 'Legal Secretary', gender: 'f', notes: 'Born 1930, Vancouver B.C. Legal Secretary. Married Francis George McGinley 1956, Vancouver B.C.' },
-  { id: 'gerry_mcginley', name: 'Maurice Gerrard (Gerry) McGinley', born: '1931', died: '1998', place: 'Vancouver, B.C.', occ: 'University Executive', gender: 'm', notes: 'Born 19 Sept 1931, Vancouver B.C. Died 1998, Calgary, Alberta. University Executive. Married Catherine Carroll McNamara, 1961, Vancouver B.C.' },
-  { id: 'catherine_mcnamara', name: 'Catherine Carroll McNamara', born: '1935', died: '', place: 'Sydney, Australia', occ: 'Physiotherapist', gender: 'f', notes: 'Born 1935, Sydney, Australia. Physiotherapist. Married Maurice Gerrard McGinley, 1961, Vancouver B.C.' },
+      // === GENERATION 5 — children of Gerry ===
+      { id: 'maurice_joseph', name: 'Maurice Joseph McGinley', born: '1962', died: '', place: 'Edmonton, Alberta', occ: 'Software Program Designer', gender: 'm', notes: 'Born 1962, Edmonton, Alberta. Software Program Designer. Married A\'na Waardyk, 1998, Sydney, Australia. Children: Seamus Aloysius (b.1998, New York), Baby McGinley #2 (b.2000, Eindhoven).' },
+      { id: 'megan_teresa', name: 'Megan Teresa McGinley', born: '1964', died: '', place: 'Edmonton, Alberta', occ: 'B.Comm, CA, MBA', gender: 'f', notes: 'Born 1964, Edmonton, Alberta. B.Comm, CA, MBA. Married Robert Simmons (B.Eng. Mech., MBA), 1995, Vancouver. Children: Claire Ellen (1997), Duncan Gerrard Simmons (1998).' },
+      { id: 'michael_patrick', name: 'Michael Patrick McGinley', born: '1966', died: '', place: 'Calgary, Alberta', occ: 'Employment Consultant', gender: 'm', notes: 'Born 1966, Calgary, Alberta. Employment Consultant. Married Lynette Deans (Hair Stylist), 1999, Calgary.' },
+      { id: 'sarah_anne', name: 'Sarah Anne McGinley', born: '1968', died: '', place: 'Calgary, Alberta', occ: 'B.A. French, Teacher', gender: 'f', notes: 'Born 1968, Calgary, Alberta. B.A. French, B.Ed. Teacher. Married Robert Schrauth (B.Phys.Ed. Teacher), 1998, Calgary. Child: Jane Katherine Schrauth (b.2000).' },
+    ];
 
-  // === GENERATION 5 — children of Francis George ===
-  { id: 'sharon_ann', name: 'Sharon Ann McGinley', born: '1956', died: '', place: 'Vancouver, B.C.', occ: 'Recreation Programmer', gender: 'f', notes: 'Born 1956, Vancouver B.C. Recreation Programmer. Married John Arthur Nevison, 1981, Vancouver B.C. Children: Morgan James (1983), Melissa Louise (1985), Tegan Ann (1991).' },
-  { id: 'william_mark', name: 'William Mark McGinley', born: '1958', died: '', place: 'Vancouver, B.C.', occ: 'Professor, Structural Engineering', gender: 'm', notes: 'Born 1958, Vancouver B.C. Professor of Structural Engineering. Married Deborah Ann Theresa Brousseau, 1980, Edmonton. Children: David Mark George (1984), James Mark David (1988), Michael Mark James (1992).' },
-  { id: 'robert_mcginley', name: 'Robert McGinley', born: '1960', died: '', place: 'Vancouver, B.C.', occ: 'Retail Clerk', gender: 'm', notes: 'Born 1960, Vancouver B.C. Retail Clerk. Married Constance Lynn Demchuk, 1984, Vancouver B.C. Children: Scott (1988), Stuart (1992).' },
+    // Layout positions: [col, row] — we build manually for clarity
+    // Row 0 = oldest ancestors, Row 5 = youngest gen
+    // Cols are horizontal position (fractional allowed)
 
-  // === GENERATION 5 — children of Gerry ===
-  { id: 'maurice_joseph', name: 'Maurice Joseph McGinley', born: '1962', died: '', place: 'Edmonton, Alberta', occ: 'Software Program Designer', gender: 'm', notes: 'Born 1962, Edmonton, Alberta. Software Program Designer. Married A\'na Waardyk, 1998, Sydney, Australia. Children: Seamus Aloysius (b.1998, New York), Baby McGinley #2 (b.2000, Eindhoven).' },
-  { id: 'megan_teresa', name: 'Megan Teresa McGinley', born: '1964', died: '', place: 'Edmonton, Alberta', occ: 'B.Comm, CA, MBA', gender: 'f', notes: 'Born 1964, Edmonton, Alberta. B.Comm, CA, MBA. Married Robert Simmons (B.Eng. Mech., MBA), 1995, Vancouver. Children: Claire Ellen (1997), Duncan Gerrard Simmons (1998).' },
-  { id: 'michael_patrick', name: 'Michael Patrick McGinley', born: '1966', died: '', place: 'Calgary, Alberta', occ: 'Employment Consultant', gender: 'm', notes: 'Born 1966, Calgary, Alberta. Employment Consultant. Married Lynette Deans (Hair Stylist), 1999, Calgary.' },
-  { id: 'sarah_anne', name: 'Sarah Anne McGinley', born: '1968', died: '', place: 'Calgary, Alberta', occ: 'B.A. French, Teacher', gender: 'f', notes: 'Born 1968, Calgary, Alberta. B.A. French, B.Ed. Teacher. Married Robert Schrauth (B.Phys.Ed. Teacher), 1998, Calgary. Child: Jane Katherine Schrauth (b.2000).' },
-];
+    const NODE_W = 145, NODE_H = 52, COL_GAP = 170, ROW_GAP = 120;
 
-// Layout positions: [col, row] — we build manually for clarity
-// Row 0 = oldest ancestors, Row 5 = youngest gen
-// Cols are horizontal position (fractional allowed)
+    const positions = {
+      'george_stephen_sr': [0, 0],
+      'james_stephen': [0, 1],
+      'ann_cordiner': [1, 1],
+      'ayling_tall': [5, 1],
+      'louisa_gibbeson': [6, 1],
+      'maurice_mcginley_sr': [9, 1],
+      'robert_stephen': [0.5, 2],
+      'alice_west': [1.5, 2],
+      'william_tall': [4.5, 2],
+      'henrietta_stephen_tall': [5.5, 2],
+      'francis_mcginley': [8.5, 2],
+      'mary_wynne': [9.5, 2],
+      'alice_stephen': [-1, 3],
+      'susan_ann_stephen': [-0.5, 3.6],
+      'james_garden_stephen': [0, 4.2],
+      'agnes_jane_stephen': [0.5, 4.8],
+      'henrietta_stephen_tall_line': null, // already in gen2 as mother
+      'henrietta_tall': [3.5, 3],
+      'maurice_mcginley': [4.5, 3],
+      'francis_george': [3, 4],
+      'barbara_flaten': [4, 4],
+      'gerry_mcginley': [5.5, 4],
+      'catherine_mcnamara': [6.5, 4],
+      'sharon_ann': [1.5, 5],
+      'william_mark': [3, 5],
+      'robert_mcginley': [4.5, 5],
+      'maurice_joseph': [5.5, 5],
+      'megan_teresa': [6.8, 5],
+      'michael_patrick': [8, 5],
+      'sarah_anne': [9.2, 5],
+    };
 
-const NODE_W = 145, NODE_H = 52, COL_GAP = 170, ROW_GAP = 120;
+    // Marriage connections: [personId1, personId2]
+    const marriages = [
+      ['james_stephen', 'ann_cordiner'],
+      ['ayling_tall', 'louisa_gibbeson'],
+      ['francis_mcginley', 'mary_wynne'],
+      ['robert_stephen', 'alice_west'],
+      ['william_tall', 'henrietta_stephen_tall'],
+      ['henrietta_tall', 'maurice_mcginley'],
+      ['francis_george', 'barbara_flaten'],
+      ['gerry_mcginley', 'catherine_mcnamara'],
+    ];
 
-const positions = {
-  'george_stephen_sr': [0, 0],
-  'james_stephen':     [0, 1],
-  'ann_cordiner':      [1, 1],
-  'ayling_tall':       [5, 1],
-  'louisa_gibbeson':   [6, 1],
-  'maurice_mcginley_sr':[9, 1],
-  'robert_stephen':    [0.5, 2],
-  'alice_west':        [1.5, 2],
-  'william_tall':      [4.5, 2],
-  'henrietta_stephen_tall': [5.5, 2],
-  'francis_mcginley':  [8.5, 2],
-  'mary_wynne':        [9.5, 2],
-  'alice_stephen':     [-1, 3],
-  'susan_ann_stephen': [-0.5, 3.6],
-  'james_garden_stephen': [0, 4.2],
-  'agnes_jane_stephen':[0.5, 4.8],
-  'henrietta_stephen_tall_line': null, // already in gen2 as mother
-  'henrietta_tall':    [3.5, 3],
-  'maurice_mcginley':  [4.5, 3],
-  'francis_george':    [3, 4],
-  'barbara_flaten':    [4, 4],
-  'gerry_mcginley':    [5.5, 4],
-  'catherine_mcnamara':[6.5, 4],
-  'sharon_ann':        [1.5, 5],
-  'william_mark':      [3, 5],
-  'robert_mcginley':   [4.5, 5],
-  'maurice_joseph':    [5.5, 5],
-  'megan_teresa':      [6.8, 5],
-  'michael_patrick':   [8, 5],
-  'sarah_anne':        [9.2, 5],
-};
+    // Parent → child connections: [parentId OR [fatherId,motherId], childId]
+    const parentChild = [
+      [['james_stephen', 'ann_cordiner'], 'robert_stephen'],
+      [['james_stephen', 'ann_cordiner'], 'alice_stephen'],
+      [['james_stephen', 'ann_cordiner'], 'susan_ann_stephen'],
+      [['james_stephen', 'ann_cordiner'], 'james_garden_stephen'],
+      [['james_stephen', 'ann_cordiner'], 'agnes_jane_stephen'],
+      [['james_stephen', 'ann_cordiner'], 'henrietta_stephen_tall'],
+      ['george_stephen_sr', 'james_stephen'],
+      [['ayling_tall', 'louisa_gibbeson'], 'william_tall'],
+      [['robert_stephen', 'alice_west'], 'henrietta_stephen_tall'],
+      [['william_tall', 'henrietta_stephen_tall'], 'henrietta_tall'],
+      [['francis_mcginley', 'mary_wynne'], 'maurice_mcginley'],
+      [['henrietta_tall', 'maurice_mcginley'], 'francis_george'],
+      [['henrietta_tall', 'maurice_mcginley'], 'gerry_mcginley'],
+      [['francis_george', 'barbara_flaten'], 'sharon_ann'],
+      [['francis_george', 'barbara_flaten'], 'william_mark'],
+      [['francis_george', 'barbara_flaten'], 'robert_mcginley'],
+      [['gerry_mcginley', 'catherine_mcnamara'], 'maurice_joseph'],
+      [['gerry_mcginley', 'catherine_mcnamara'], 'megan_teresa'],
+      [['gerry_mcginley', 'catherine_mcnamara'], 'michael_patrick'],
+      [['gerry_mcginley', 'catherine_mcnamara'], 'sarah_anne'],
+    ];
 
-// Marriage connections: [personId1, personId2]
-const marriages = [
-  ['james_stephen', 'ann_cordiner'],
-  ['ayling_tall', 'louisa_gibbeson'],
-  ['francis_mcginley', 'mary_wynne'],
-  ['robert_stephen', 'alice_west'],
-  ['william_tall', 'henrietta_stephen_tall'],
-  ['henrietta_tall', 'maurice_mcginley'],
-  ['francis_george', 'barbara_flaten'],
-  ['gerry_mcginley', 'catherine_mcnamara'],
-];
+    // ─── RENDER ──────────────────────────────────────────────────────────────────
+    const COLS = 11, ROWS = 6;
+    const SVG_W = COLS * COL_GAP + NODE_W + 60;
+    const SVG_H = ROWS * ROW_GAP + NODE_H + 60;
+    const PAD = 30;
 
-// Parent → child connections: [parentId OR [fatherId,motherId], childId]
-const parentChild = [
-  [['james_stephen','ann_cordiner'], 'robert_stephen'],
-  [['james_stephen','ann_cordiner'], 'alice_stephen'],
-  [['james_stephen','ann_cordiner'], 'susan_ann_stephen'],
-  [['james_stephen','ann_cordiner'], 'james_garden_stephen'],
-  [['james_stephen','ann_cordiner'], 'agnes_jane_stephen'],
-  [['james_stephen','ann_cordiner'], 'henrietta_stephen_tall'],
-  ['george_stephen_sr', 'james_stephen'],
-  [['ayling_tall','louisa_gibbeson'], 'william_tall'],
-  [['robert_stephen','alice_west'], 'henrietta_stephen_tall'],
-  [['william_tall','henrietta_stephen_tall'], 'henrietta_tall'],
-  [['francis_mcginley','mary_wynne'], 'maurice_mcginley'],
-  [['henrietta_tall','maurice_mcginley'], 'francis_george'],
-  [['henrietta_tall','maurice_mcginley'], 'gerry_mcginley'],
-  [['francis_george','barbara_flaten'], 'sharon_ann'],
-  [['francis_george','barbara_flaten'], 'william_mark'],
-  [['francis_george','barbara_flaten'], 'robert_mcginley'],
-  [['gerry_mcginley','catherine_mcnamara'], 'maurice_joseph'],
-  [['gerry_mcginley','catherine_mcnamara'], 'megan_teresa'],
-  [['gerry_mcginley','catherine_mcnamara'], 'michael_patrick'],
-  [['gerry_mcginley','catherine_mcnamara'], 'sarah_anne'],
-];
+    function px(col) { return PAD + col * COL_GAP; }
+    function py(row) { return PAD + row * ROW_GAP; }
 
-// ─── RENDER ──────────────────────────────────────────────────────────────────
-const COLS = 11, ROWS = 6;
-const SVG_W = COLS * COL_GAP + NODE_W + 60;
-const SVG_H = ROWS * ROW_GAP + NODE_H + 60;
-const PAD = 30;
+    const svg = d3.select('#treeSvg')
+      .attr('width', SVG_W)
+      .attr('height', SVG_H);
 
-function px(col) { return PAD + col * COL_GAP; }
-function py(row) { return PAD + row * ROW_GAP; }
+    // Arrow marker
+    svg.append('defs').append('marker')
+      .attr('id', 'arrow').attr('viewBox', '0 0 10 10')
+      .attr('refX', 9).attr('refY', 5)
+      .attr('markerWidth', 6).attr('markerHeight', 6)
+      .attr('orient', 'auto')
+      .append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z').attr('fill', '#8aaa88');
 
-const svg = d3.select('#treeSvg')
-  .attr('width', SVG_W)
-  .attr('height', SVG_H);
+    const pMap = {};
+    people.forEach(p => {
+      if (positions[p.id]) pMap[p.id] = p;
+    });
 
-// Arrow marker
-svg.append('defs').append('marker')
-  .attr('id','arrow').attr('viewBox','0 0 10 10')
-  .attr('refX',9).attr('refY',5)
-  .attr('markerWidth',6).attr('markerHeight',6)
-  .attr('orient','auto')
-  .append('path').attr('d','M 0 0 L 10 5 L 0 10 z').attr('fill','#8aaa88');
+    // ── Draw marriage lines ──
+    marriages.forEach(([a, b]) => {
+      if (!positions[a] || !positions[b]) return;
+      const ax = px(positions[a][0]) + NODE_W / 2;
+      const ay = py(positions[a][1]) + NODE_H / 2;
+      const bx = px(positions[b][0]) + NODE_W / 2;
+      const by = py(positions[b][1]) + NODE_H / 2;
+      svg.append('line')
+        .attr('class', 'marriage-line')
+        .attr('x1', ax).attr('y1', ay)
+        .attr('x2', bx).attr('y2', by);
+    });
 
-const pMap = {};
-people.forEach(p => {
-  if (positions[p.id]) pMap[p.id] = p;
-});
-
-// ── Draw marriage lines ──
-marriages.forEach(([a, b]) => {
-  if (!positions[a] || !positions[b]) return;
-  const ax = px(positions[a][0]) + NODE_W / 2;
-  const ay = py(positions[a][1]) + NODE_H / 2;
-  const bx = px(positions[b][0]) + NODE_W / 2;
-  const by = py(positions[b][1]) + NODE_H / 2;
-  svg.append('line')
-    .attr('class','marriage-line')
-    .attr('x1', ax).attr('y1', ay)
-    .attr('x2', bx).attr('y2', by);
-});
-
-// Helper: midpoint of couple
-function coupleMid(ids) {
-  const pts = ids.filter(id => positions[id]).map(id => ({
-    x: px(positions[id][0]) + NODE_W / 2,
-    y: py(positions[id][1]) + NODE_H / 2,
-  }));
-  if (pts.length === 0) return null;
-  if (pts.length === 1) return pts[0];
-  return { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
-}
-
-function personMid(id) {
-  if (!positions[id]) return null;
-  return {
-    x: px(positions[id][0]) + NODE_W / 2,
-    y: py(positions[id][1]) + NODE_H
-  };
-}
-
-// ── Draw parent→child edges ──
-parentChild.forEach(([parents, childId]) => {
-  if (!positions[childId]) return;
-  const cx = px(positions[childId][0]) + NODE_W / 2;
-  const cy = py(positions[childId][1]);
-  let from;
-  if (Array.isArray(parents)) {
-    from = coupleMid(parents);
-  } else {
-    from = personMid(parents);
-  }
-  if (!from) return;
-
-  const midY = (from.y + cy) / 2;
-  const path = `M ${from.x},${from.y} C ${from.x},${midY} ${cx},${midY} ${cx},${cy}`;
-  svg.append('path').attr('class','edge').attr('d', path);
-});
-
-// ── Draw person nodes ──
-people.forEach(p => {
-  if (!positions[p.id]) return;
-  const [col, row] = positions[p.id];
-  const x = px(col), y = py(row);
-
-  // Color scheme
-  const isCentral = p.id === 'henrietta_tall' || p.id === 'maurice_mcginley';
-  const fill = isCentral ? '#ede4d0' :
-               p.gender === 'm' ? '#dff0d8' : '#f9e8e4';
-  const stroke = isCentral ? '#c9a84c' :
-                 p.gender === 'm' ? '#2d5a3d' : '#a05040';
-
-  const g = svg.append('g')
-    .attr('class','person-node')
-    .attr('transform',`translate(${x},${y})`)
-    .style('cursor','pointer')
-    .on('click', () => showInfo(p));
-
-  g.append('rect')
-    .attr('width', NODE_W).attr('height', NODE_H)
-    .attr('rx', 6).attr('ry', 6)
-    .attr('fill', fill).attr('stroke', stroke).attr('stroke-width', 1.8);
-
-  // Name — wrap if long
-  const nameParts = p.name.split(' ');
-  let line1 = '', line2 = '';
-  if (p.name.length <= 20) {
-    line1 = p.name;
-  } else {
-    const mid = Math.ceil(nameParts.length / 2);
-    line1 = nameParts.slice(0, mid).join(' ');
-    line2 = nameParts.slice(mid).join(' ');
-  }
-
-  if (line2) {
-    g.append('text').attr('class','p-name').attr('x', NODE_W/2).attr('y', 14)
-      .attr('text-anchor','middle').text(line1);
-    g.append('text').attr('class','p-name').attr('x', NODE_W/2).attr('y', 26)
-      .attr('text-anchor','middle').text(line2);
-    const dateStr = [p.born, p.died].filter(Boolean).join(' – ');
-    if (dateStr) {
-      g.append('text').attr('class','p-dates').attr('x', NODE_W/2).attr('y', 39)
-        .attr('text-anchor','middle').text(dateStr);
+    // Helper: midpoint of couple
+    function coupleMid(ids) {
+      const pts = ids.filter(id => positions[id]).map(id => ({
+        x: px(positions[id][0]) + NODE_W / 2,
+        y: py(positions[id][1]) + NODE_H / 2,
+      }));
+      if (pts.length === 0) return null;
+      if (pts.length === 1) return pts[0];
+      return { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
     }
-  } else {
-    g.append('text').attr('class','p-name').attr('x', NODE_W/2).attr('y', 18)
-      .attr('text-anchor','middle').text(line1);
-    const dateStr = [p.born, p.died].filter(Boolean).join(' – ');
-    if (dateStr) {
-      g.append('text').attr('class','p-dates').attr('x', NODE_W/2).attr('y', 32)
-        .attr('text-anchor','middle').text(dateStr);
-    }
-    if (p.place) {
-      g.append('text').attr('class','p-occ').attr('x', NODE_W/2).attr('y', 44)
-        .attr('text-anchor','middle')
-        .text(p.place.length > 22 ? p.place.substring(0,22)+'…' : p.place);
-    }
-  }
-});
 
-// ── Info panel ──
-function showInfo(p) {
-  const panel = document.getElementById('info-panel');
-  const dateStr = [p.born && `b. ${p.born}`, p.died && `d. ${p.died}`].filter(Boolean).join(' · ');
-  panel.innerHTML = `
+    function personMid(id) {
+      if (!positions[id]) return null;
+      return {
+        x: px(positions[id][0]) + NODE_W / 2,
+        y: py(positions[id][1]) + NODE_H
+      };
+    }
+
+    // ── Draw parent→child edges ──
+    parentChild.forEach(([parents, childId]) => {
+      if (!positions[childId]) return;
+      const cx = px(positions[childId][0]) + NODE_W / 2;
+      const cy = py(positions[childId][1]);
+      let from;
+      if (Array.isArray(parents)) {
+        from = coupleMid(parents);
+      } else {
+        from = personMid(parents);
+      }
+      if (!from) return;
+
+      const midY = (from.y + cy) / 2;
+      const path = `M ${from.x},${from.y} C ${from.x},${midY} ${cx},${midY} ${cx},${cy}`;
+      svg.append('path').attr('class', 'edge').attr('d', path);
+    });
+
+    // ── Draw person nodes ──
+    people.forEach(p => {
+      if (!positions[p.id]) return;
+      const [col, row] = positions[p.id];
+      const x = px(col), y = py(row);
+
+      // Color scheme
+      const isCentral = p.id === 'henrietta_tall' || p.id === 'maurice_mcginley';
+      const fill = isCentral ? '#ede4d0' :
+        p.gender === 'm' ? '#dff0d8' : '#f9e8e4';
+      const stroke = isCentral ? '#c9a84c' :
+        p.gender === 'm' ? '#2d5a3d' : '#a05040';
+
+      const g = svg.append('g')
+        .attr('class', 'person-node')
+        .attr('transform', `translate(${x},${y})`)
+        .style('cursor', 'pointer')
+        .on('click', () => showInfo(p));
+
+      g.append('rect')
+        .attr('width', NODE_W).attr('height', NODE_H)
+        .attr('rx', 6).attr('ry', 6)
+        .attr('fill', fill).attr('stroke', stroke).attr('stroke-width', 1.8);
+
+      // Name — wrap if long
+      const nameParts = p.name.split(' ');
+      let line1 = '', line2 = '';
+      if (p.name.length <= 20) {
+        line1 = p.name;
+      } else {
+        const mid = Math.ceil(nameParts.length / 2);
+        line1 = nameParts.slice(0, mid).join(' ');
+        line2 = nameParts.slice(mid).join(' ');
+      }
+
+      if (line2) {
+        g.append('text').attr('class', 'p-name').attr('x', NODE_W / 2).attr('y', 14)
+          .attr('text-anchor', 'middle').text(line1);
+        g.append('text').attr('class', 'p-name').attr('x', NODE_W / 2).attr('y', 26)
+          .attr('text-anchor', 'middle').text(line2);
+        const dateStr = [p.born, p.died].filter(Boolean).join(' – ');
+        if (dateStr) {
+          g.append('text').attr('class', 'p-dates').attr('x', NODE_W / 2).attr('y', 39)
+            .attr('text-anchor', 'middle').text(dateStr);
+        }
+      } else {
+        g.append('text').attr('class', 'p-name').attr('x', NODE_W / 2).attr('y', 18)
+          .attr('text-anchor', 'middle').text(line1);
+        const dateStr = [p.born, p.died].filter(Boolean).join(' – ');
+        if (dateStr) {
+          g.append('text').attr('class', 'p-dates').attr('x', NODE_W / 2).attr('y', 32)
+            .attr('text-anchor', 'middle').text(dateStr);
+        }
+        if (p.place) {
+          g.append('text').attr('class', 'p-occ').attr('x', NODE_W / 2).attr('y', 44)
+            .attr('text-anchor', 'middle')
+            .text(p.place.length > 22 ? p.place.substring(0, 22) + '…' : p.place);
+        }
+      }
+    });
+
+    // ── Info panel ──
+    function showInfo(p) {
+      const panel = document.getElementById('info-panel');
+      const dateStr = [p.born && `b. ${p.born}`, p.died && `d. ${p.died}`].filter(Boolean).join(' · ');
+      panel.innerHTML = `
     <div>
       <div class="info-name">${p.name}</div>
       <div class="info-detail" style="color:#aad0aa;">${dateStr}${p.place ? ' · ' + p.place : ''}</div>
@@ -383,33 +480,34 @@ function showInfo(p) {
     </div>
     <div class="info-detail" style="max-width:500px;">${p.notes || ''}</div>
   `;
-}
+    }
 
-// ── Zoom/Pan ──
-let currentScale = 1;
-const container = document.getElementById('svgContainer');
+    // ── Zoom/Pan ──
+    let currentScale = 1;
+    const container = document.getElementById('svgContainer');
 
-function zoomIn() {
-  currentScale = Math.min(currentScale * 1.25, 3);
-  svg.style('transform', `scale(${currentScale})`);
-  svg.style('transform-origin', 'top left');
-}
-function zoomOut() {
-  currentScale = Math.max(currentScale * 0.8, 0.35);
-  svg.style('transform', `scale(${currentScale})`);
-  svg.style('transform-origin', 'top left');
-}
-function resetView() {
-  currentScale = 1;
-  svg.style('transform', '');
-  container.scrollLeft = 0;
-  container.scrollTop = 0;
-}
+    function zoomIn() {
+      currentScale = Math.min(currentScale * 1.25, 3);
+      svg.style('transform', `scale(${currentScale})`);
+      svg.style('transform-origin', 'top left');
+    }
+    function zoomOut() {
+      currentScale = Math.max(currentScale * 0.8, 0.35);
+      svg.style('transform', `scale(${currentScale})`);
+      svg.style('transform-origin', 'top left');
+    }
+    function resetView() {
+      currentScale = 1;
+      svg.style('transform', '');
+      container.scrollLeft = 0;
+      container.scrollTop = 0;
+    }
 
-// Set container height
-container.style.maxHeight = '560px';
-container.style.overflowY = 'auto';
-</script>
+    // Set container height
+    container.style.maxHeight = '560px';
+    container.style.overflowY = 'auto';
+  </script>
 
 </body>
+
 </html>
