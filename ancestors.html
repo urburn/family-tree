@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ancestors — McGinley Family</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .full-bio {
+      background: var(--white);
+      border: 1px solid #d4c9b0;
+      border-left: 5px solid var(--gold);
+      border-radius: 4px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .full-bio .bio-label {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+    }
+    .full-bio h2 {
+      color: var(--green-dark);
+      font-size: 1.55rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.25rem;
+    }
+    .full-bio .bio-dates {
+      color: #888;
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #e0d8c8;
+    }
+    .full-bio p { margin-bottom: 0.9rem; color: var(--text-mid); font-size: 0.94rem; line-height: 1.75; }
+    .full-bio p:last-child { margin-bottom: 0; }
+    .facts-row {
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+      margin: 1rem 0;
+      padding: 0.8rem 0;
+      border-top: 1px solid #e0d8c8;
+      border-bottom: 1px solid #e0d8c8;
+    }
+    .fact { font-size: 0.86rem; }
+    .fact .fact-label { color: var(--green-mid); font-weight: bold; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .fact .fact-val { color: var(--text-dark); }
+
+    .line-intro {
+      background: var(--green-dark);
+      color: var(--cream);
+      border-radius: 4px;
+      padding: 1.2rem 1.8rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--gold);
+    }
+    .line-intro h3 { color: var(--gold-light); margin-bottom: 0.3rem; }
+    .line-intro p { font-size: 0.9rem; color: #c0d8c0; font-style: italic; }
+
+    .tab-bar { display: flex; gap: 0; border-bottom: 2px solid var(--gold); margin-bottom: 2rem; flex-wrap: wrap; }
+    .tab-bar a {
+      padding: 0.65rem 1.2rem;
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-bar a:hover { color: var(--green-dark); border-color: var(--green-mid); }
+    .tab-bar a.active { color: var(--green-dark); border-color: var(--gold); font-weight: bold; }
+
+    .section-anchor { scroll-margin-top: 70px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">⚜ McGinley Family</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family-tree.html">Family Tree</a></li>
+      <li><a href="ancestors.html" class="active">Ancestors</a></li>
+      <li><a href="deploy.html">Publish Site</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero" style="padding:2rem 1.5rem;">
+  <h1 style="font-size:2rem;">Ancestor Biographies</h1>
+  <p class="subtitle">The remarkable people behind the McGinley family</p>
+</div>
+
+<div class="container">
+
+  <div class="tab-bar">
+    <a href="#mcginley-line" class="active">🍀 McGinley</a>
+    <a href="#stephen-line">⚓ Stephen</a>
+    <a href="#tall-line">⛵ Tall</a>
+    <a href="#west-line">⚔️ West</a>
+    <a href="#connected">🌍 Connected Relatives</a>
+  </div>
+
+  <!-- ═══ McGINLEY LINE ═══ -->
+  <div id="mcginley-line" class="section-anchor">
+    <div class="line-intro">
+      <h3>🍀 The McGinley Line — Ireland to England to Canada</h3>
+      <p>The McGinley family traces from Dundork, near Dublin, Ireland, through Lancashire, England, and on to Vancouver, Canada by the 1920s.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Great Grandfather</div>
+      <h2>Maurice McGinley</h2>
+      <div class="bio-dates">Born: Dundork, near Dublin, Ireland</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Origin</div><div class="fact-val">Dundork, near Dublin, Ireland</div></div>
+        <div class="fact"><div class="fact-label">Settled</div><div class="fact-val">Lancashire, England</div></div>
+        <div class="fact"><div class="fact-label">Children</div><div class="fact-val">Vincent, Mary Agnes, Francis, Margaret &amp; Winifred</div></div>
+      </div>
+      <p>Maurice McGinley was born at Dundork, near Dublin, Ireland, and at some point moved his family to Lancashire, England — part of the large Irish migration to the industrial north of England during the 19th century. He is the earliest known ancestor of the Canadian McGinley line.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Grandfather</div>
+      <h2>Francis McGinley</h2>
+      <div class="bio-dates">Married: 4 September 1901 · Widnes, Lancashire, England</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Marriage</div><div class="fact-val">4 Sept 1901, St. Marie's R.C. Church, Widnes</div></div>
+        <div class="fact"><div class="fact-label">Spouse</div><div class="fact-val">Mary Agnes Wynne (known as "Marian")</div></div>
+        <div class="fact"><div class="fact-label">Children</div><div class="fact-val">7 children, including Maurice (the Grandfather)</div></div>
+        <div class="fact"><div class="fact-label">Officiant</div><div class="fact-val">Father O'Brien</div></div>
+      </div>
+      <p>Francis McGinley, son of Maurice McGinley, married Mary Agnes Wynne — known in the family as "Marian" — on 4th September 1901 at St. Marie's Roman Catholic Church in Widnes, Lancashire. The ceremony was performed by Father O'Brien. Together they had seven children, of whom baby Maurice appears in the family photographs.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Grandfather</div>
+      <h2>Maurice McGinley</h2>
+      <div class="bio-dates">Born: 30 November 1902, Widnes, Lancashire, England · Died: 1997</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Born</div><div class="fact-val">30 Nov 1902, Widnes, Lancashire</div></div>
+        <div class="fact"><div class="fact-label">Occupation</div><div class="fact-val">Accountant</div></div>
+        <div class="fact"><div class="fact-label">Marriage</div><div class="fact-val">16 Aug 1927, Our Lady of Perpetual Help, Vancouver</div></div>
+        <div class="fact"><div class="fact-label">Spouse</div><div class="fact-val">Henrietta Teresa Tall</div></div>
+        <div class="fact"><div class="fact-label">Children</div><div class="fact-val">Francis George (b.1929), Maurice Gerrard (b.1931)</div></div>
+      </div>
+      <p>Maurice McGinley was born on 30th November 1902 in Widnes, Lancashire, England — the same parish where his parents had married just the year before. He worked as an accountant and eventually settled in Vancouver, British Columbia, Canada.</p>
+      <p>On 16th August 1927, he married Henrietta Teresa Tall at Our Lady of Perpetual Help parish in Vancouver. Their union brought together the McGinley line from Ireland and England with the Tall–Stephen line from Scotland. They had two sons: Francis George (born 25 April 1929) and Maurice Gerrard, known as Gerry (born 19 September 1931).</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Grandmother</div>
+      <h2>Henrietta Teresa McGinley <span style="font-weight:normal;font-size:1rem;color:#888;">née Tall</span></h2>
+      <div class="bio-dates">Born: 29 April 1900, Lerwick, Shetland Islands, Scotland · Died: 1990, Vancouver, B.C.</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Born</div><div class="fact-val">29 Apr 1900, Lerwick, Shetland Islands</div></div>
+        <div class="fact"><div class="fact-label">Parents</div><div class="fact-val">William Tall &amp; Henrietta (Ettie) Stephen</div></div>
+        <div class="fact"><div class="fact-label">Marriage</div><div class="fact-val">16 Aug 1927, Vancouver, B.C.</div></div>
+        <div class="fact"><div class="fact-label">Died</div><div class="fact-val">1990, Vancouver, B.C.</div></div>
+      </div>
+      <p>Henrietta Teresa Tall was born on 29 April 1900 in Lerwick, the capital of the Shetland Islands, Scotland. Her father William Tall was a Royal Navy sailor from Lancaster, England; her mother was Henrietta (Ettie) Stephen, daughter of the prominent Peterhead shipbuilding family. The family eventually settled in Vancouver.</p>
+      <p>She married Maurice McGinley on 16 August 1927 and together they raised two sons in Vancouver. She lived to 1990, reaching the age of 90.</p>
+    </div>
+  </div>
+
+  <!-- ═══ STEPHEN LINE ═══ -->
+  <div id="stephen-line" class="section-anchor" style="margin-top:2rem;">
+    <div class="line-intro">
+      <h3>⚓ The Stephen Line — Peterhead, Scotland</h3>
+      <p>The Stephens were shipbuilders, fish curers, and seafarers of Peterhead. Their ancestry reaches back to the Napoleonic Wars.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Great Great Grandfather</div>
+      <h2>George Stephen</h2>
+      <div class="bio-dates">Trafalgar Veteran, 1805</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Notable</div><div class="fact-val">Battle of Trafalgar, 21 Oct 1805</div></div>
+        <div class="fact"><div class="fact-label">Served with</div><div class="fact-val">Lord Nelson, Royal Navy</div></div>
+      </div>
+      <p>George Stephen served in the Royal Navy and was present at the Battle of Trafalgar on 21 October 1805 — one of history's most decisive naval engagements, in which Admiral Lord Nelson defeated the combined French and Spanish fleets, though Nelson himself was killed. Like Nelson, George Stephen lost an eye in the battle.</p>
+      <p>He never tired of recounting the qualities of his hero, and family heirlooms from his life — including a mahogany table and a waistcoat of brocade satin — were still in the possession of a relative at the time these records were compiled.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Great Grandparents</div>
+      <h2>James Stephen &amp; Ann Cordiner</h2>
+      <div class="bio-dates">Married: 16 February 1828, Scotland</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">James</div><div class="fact-val">Born 15 May 1805, died 1887</div></div>
+        <div class="fact"><div class="fact-label">Ann</div><div class="fact-val">Born 22 Nov 1806, died 1891</div></div>
+        <div class="fact"><div class="fact-label">Home</div><div class="fact-val">Harbour Street, Peterhead (self-owned)</div></div>
+        <div class="fact"><div class="fact-label">Occupation</div><div class="fact-val">Shipbuilding &amp; Fish Curing</div></div>
+      </div>
+      <p>James Stephen and Ann Cordiner married on 16 February 1828 and had six children, all of whom lived in houses alongside each other in Harbour Street, Peterhead. All pursued the family trades of shipbuilding and fish curing. Their children were:</p>
+      <p><strong>George</strong> (28 May 1829–1903) · <strong>Ann</strong> (2 Sept 1831–1919) · <strong>James</strong> (4 Feb 1834–1925) · <strong>Alexander</strong> (13 Aug 1836–1913) · <strong>Robert</strong> (2 Aug 1841–1928) · <strong>Andrew</strong> (17 Aug 1850–1934)</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Grandparents</div>
+      <h2>Robert Stephen &amp; Alicia (Alice) Margaret West</h2>
+      <div class="bio-dates">Married: 6 April 1868, Muchalls, Cookney Parish, Scotland</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Robert born</div><div class="fact-val">2 Aug 1841, Boddam, Scotland</div></div>
+        <div class="fact"><div class="fact-label">Robert died</div><div class="fact-val">3 Jan 1928</div></div>
+        <div class="fact"><div class="fact-label">Alice born</div><div class="fact-val">28 Aug 1846, Portsoy, Scotland</div></div>
+        <div class="fact"><div class="fact-label">Alice died</div><div class="fact-val">1917, Vancouver, B.C.</div></div>
+        <div class="fact"><div class="fact-label">Children</div><div class="fact-val">12 children</div></div>
+      </div>
+      <p>Robert Stephen was born in Boddam, Scotland, near Peterhead, the son of James Stephen and Ann Cordiner. He married Alicia Margaret West — known as Alice — in the parish of Cookney, Muchalls, on 6 April 1868. Together they had twelve children.</p>
+      <p>In 1902, Robert emigrated to the Northwest Territories of Canada, becoming a true pioneer. He built the Bar S Ranch, worked as a boat builder, cabinet-maker, and ferry-man, and was noted as a fish curer and inventor. Alice died in 1917 in Vancouver. Robert lived until 1928, dying at age 86.</p>
+      <p>Their children included: Alice, Susan Ann (Mrs. D.D.C. Murray, M.B.E.), Henrietta (who married William Tall), James Garden, William Andrew (died in infancy), Agnes Jane, Thomas Hutchinson, George Craib, Elsie Gordon, Sarah Elizabeth, and John Clark.</p>
+    </div>
+  </div>
+
+  <!-- ═══ TALL LINE ═══ -->
+  <div id="tall-line" class="section-anchor" style="margin-top:2rem;">
+    <div class="line-intro">
+      <h3>⛵ The Tall Line — Lancaster, England &amp; Shetland Islands</h3>
+      <p>The Tall family came from Lancashire, England, and connected to the Stephens through the marriage of William Tall to Henrietta Stephen in 1895.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Great Grandfather</div>
+      <h2>Ayling Tall</h2>
+      <div class="bio-dates">England</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Spouse</div><div class="fact-val">Louisa Gibbeson, daughter of Gunner Warrant Officer Gibbeson of Plymouth</div></div>
+        <div class="fact"><div class="fact-label">Sons</div><div class="fact-val">John Tall, William Tall</div></div>
+        <div class="fact"><div class="fact-label">Daughters</div><div class="fact-val">Elizabeth, Ellen, Louisa</div></div>
+      </div>
+      <p>Ayling Tall married Louisa Gibbeson, the daughter of Gunner Warrant Officer Gibbeson of Plymouth, England. His elder son John Tall married Clara Symes — his first cousin, being the daughter of Ayling's sister. His younger son William married Henrietta Stephen of Peterhead, Scotland, connecting the Tall family to the prominent Scottish shipbuilding family.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Grandfather</div>
+      <h2>William Tall</h2>
+      <div class="bio-dates">Born: 19 February 1866, Lytham, Lancaster, England · Died: 1939, Vancouver, B.C.</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Born</div><div class="fact-val">19 Feb 1866, Lytham, Lancaster, England</div></div>
+        <div class="fact"><div class="fact-label">Occupation</div><div class="fact-val">Sailor, Royal Navy; Yeoman of Signals</div></div>
+        <div class="fact"><div class="fact-label">Married</div><div class="fact-val">17 Oct 1895, Peterhead, Scotland</div></div>
+        <div class="fact"><div class="fact-label">Spouse</div><div class="fact-val">Henrietta (Ettie) Stephen</div></div>
+        <div class="fact"><div class="fact-label">Died</div><div class="fact-val">1939, Vancouver, B.C.</div></div>
+      </div>
+      <p>William Tall was born on 19 February 1866 in the parish of Lytham, Lancaster, England. He served in the Royal Navy, attaining the rank of Yeoman of Signals. In 1895, he married Henrietta (Ettie) Stephen in Peterhead, Scotland — daughter of Robert and Alice Stephen.</p>
+      <p>Their children were: Alice Louise (b.1896, Peterhead — died young in Saskatchewan), William Stephen (b.1897, Peterhead — became an aircraft mechanic in California), Henrietta Teresa (b.1900, Lerwick — who became Grandmother McGinley), Lydia (b.1902–03, died in infancy in Scotland), and John Ayling Tall (b.1905, Maymont, Saskatchewan).</p>
+    </div>
+  </div>
+
+  <!-- ═══ WEST LINE ═══ -->
+  <div id="west-line" class="section-anchor" style="margin-top:2rem;">
+    <div class="line-intro">
+      <h3>⚔️ The West Line — Ireland, Scotland &amp; the Royal Navy</h3>
+      <p>The West family, through Alice West who married Robert Stephen in 1868, traces back to a distinguished naval lineage including Vice Admiral Temple West, commemorated in Westminster Abbey.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Distant Ancestor</div>
+      <h2>Vice Admiral Temple West</h2>
+      <div class="bio-dates">Died: 1757, age 43 · Commemorated in Westminster Abbey, North Aisle</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Entered Navy</div><div class="fact-val">September 1727, aboard HMS Revenge</div></div>
+        <div class="fact"><div class="fact-label">Father</div><div class="fact-val">Richard West, D.D., prebendary of Winchester</div></div>
+        <div class="fact"><div class="fact-label">Spouse</div><div class="fact-val">Daughter of Admiral Sir John Balchen</div></div>
+        <div class="fact"><div class="fact-label">Notable</div><div class="fact-val">Battle of the Second Cape Finisterre, May 1747; Battle of Minorca, May 1756</div></div>
+      </div>
+      <p>Temple West entered the Royal Navy in September 1727 as a volunteer aboard HMS Revenge, the beginning of a distinguished career that would take him to the rank of Vice Admiral of the White. He was the son of Richard West, D.D., prebendary of Winchester, by his wife Maria, eldest daughter of Sir Richard Remple (1634–1697).</p>
+      <p>He married the daughter of Admiral Sir John Balchen. In the signal victory over the French fleet on 3 May 1747 (the Second Battle of Cape Finisterre), he was Captain of the ship carrying Sir Peter Warren, and distinguished himself brilliantly. At the Battle of Minorca on 20 May 1756, as Rear Admiral commanding the second division, his courage was admired by the whole British squadron.</p>
+      <p>On 17 November 1757, he was appointed one of the Lord's Commissioners of the Admiralty. He died the same year, at the age of 43. His monument in the North Aisle of Westminster Abbey was erected by his widow — the daughter of the brave Admiral Balchen — to preserve to posterity his fame and example. His brother was Gilbert West, the author (1703–1756). Jane West, the authoress, was also a relative.</p>
+    </div>
+
+    <div class="full-bio">
+      <div class="bio-label">Great Great Grandmother</div>
+      <h2>Susan Brown West</h2>
+      <div class="bio-dates">Clifden, Co. Galway, Ireland</div>
+      <div class="facts-row">
+        <div class="fact"><div class="fact-label">Home</div><div class="fact-val">Clifden, Co. Galway, Ireland</div></div>
+        <div class="fact"><div class="fact-label">Family</div><div class="fact-val">The Browns — titled people</div></div>
+        <div class="fact"><div class="fact-label">Married</div><div class="fact-val">Garden West of Kingtown, near Dublin</div></div>
+      </div>
+      <p>Susan Brown came from Clifden, Co. Galway, Ireland — her family were titled people who opposed her marriage to Garden West of Kingtown (now Dún Laoghaire), near Dublin, as he was considered not of their station. It was her brother who introduced the couple, having become great friends with Garden through their shared love of violin music while serving in the Navy together.</p>
+      <p>Susan's parents did not attend the wedding, and she never returned home — though her mother did send her personal maid to be with Susan. Lady Alice Fisher of Terrehaute attended the wedding and corresponded with Susan Ann Stephen (Mrs. D.D.C. Murray) about the occasion.</p>
+      <p>Their daughter Alicia (Alice) Margaret West was born in 1846 in Portsoy, Scotland, and went on to marry Robert Stephen in 1868. An Admiral of Napoleon's era from the Brown family served in the West Indies.</p>
+    </div>
+  </div>
+
+  <!-- ═══ CONNECTED RELATIVES ═══ -->
+  <div id="connected" class="section-anchor" style="margin-top:2rem;">
+    <div class="line-intro">
+      <h3>🌍 Connected Relatives</h3>
+      <p>Notable relatives connected to the family through the Stephen and West lines.</p>
+    </div>
+
+    <div class="bio-grid">
+      <div class="bio-card">
+        <div class="bio-header">
+          <div class="relation">Great Aunt · Stephen Line</div>
+          <h3>Susan Ann Stephen (Mrs. D.D.C. Murray, M.B.E.)</h3>
+          <div class="bio-dates">Born 1872 · Died 1960, South Africa</div>
+        </div>
+        <div class="bio-body">
+          <p>Susan Ann was the second eldest daughter of Robert and Alice Stephen of Peterhead. During the First World War she established numerous Red Cross stations throughout South Africa, for which she was presented at Court and honoured by the Queen with the M.B.E.</p>
+          <p>Her husband, Donald D.C. Murray, D.S.O., was a prominent businessman and statesman. Their home "Haldon," outside Bloemfontein, South Africa, occupied 125 acres and was celebrated for its hospitality — welcoming dignitaries including General Lord Haig and Mrs. Haig.</p>
+        </div>
+      </div>
+
+      <div class="bio-card">
+        <div class="bio-header">
+          <div class="relation">Connected Relative · Murray</div>
+          <h3>D.D.C. Murray, D.S.O.</h3>
+          <div class="bio-dates">Bloemfontein, South Africa</div>
+        </div>
+        <div class="bio-body">
+          <p>Donald D.C. Murray was born and educated at Castetown, Caithness, Scotland. He worked for the Commercial Bank of Scotland before joining the National Bank of South Africa. On the invitation of Sir John Fraser, he became a partner in Fraser &amp; Scott, a large commercial and real estate firm in Bloemfontein.</p>
+          <p>He served with the South African Forces in the First World War and was awarded the D.S.O., becoming Honorary Colonel of Bloemfontein. He was elected to the Senate and became Chief Whip of the United Party, a close friend of General Smuts. He coordinated the arrangements for the Royal visit to Bloemfontein (the King, Queen, and Princesses) and was Chief of the Caledonian Society of South Africa for many years.</p>
+        </div>
+      </div>
+
+      <div class="bio-card">
+        <div class="bio-header">
+          <div class="relation">Great Uncle · Tall Line</div>
+          <h3>John Tall</h3>
+          <div class="bio-dates">England</div>
+        </div>
+        <div class="bio-body">
+          <p>John Tall was the only brother of William Tall (Great Grandfather), and the elder son of Ayling Tall. He married Clara Symes, his first cousin — the daughter of Ayling Tall's sister. Their children were Stella, Ethel (neither married), and Sylvia, who married Ted Morey and lived on the Isle of Wight with their four children.</p>
+        </div>
+      </div>
+
+      <div class="bio-card">
+        <div class="bio-header">
+          <div class="relation">Great Uncle · Tall Line</div>
+          <h3>William Stephen Tall</h3>
+          <div class="bio-dates">Born 1897, Peterhead · Died 1978, California, U.S.A.</div>
+        </div>
+        <div class="bio-body">
+          <p>William Stephen Tall was the son of William Tall and Henrietta Stephen, and brother of Grandmother Henrietta Teresa. He became an aircraft mechanic and settled in California, U.S.A. He married twice (and divorced). He died in 1978 in California.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="origins" class="section-anchor" style="margin-top:2rem; padding:1.5rem; background:#f0f7f2; border:1px solid var(--green-light); border-radius:4px; font-size:0.9rem; color:var(--text-mid);">
+    <strong style="color:var(--green-dark);">Family Origins Summary:</strong> The four lines that converged in the McGinley family of Vancouver came from: the Irish midlands (McGinley — Dundork near Dublin); coastal Scotland (Stephen — Peterhead and Boddam); northern England and Scotland (Tall — Lancaster, Lytham, and Lerwick in the Shetlands); and Ireland and Scotland (West — Clifden, Galway and Portsoy, Scotland). By 1927, all lines had made their way to Vancouver, British Columbia, Canada.
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">The McGinley Family</div>
+  <div>Ireland · Scotland · England · Canada · Australia · South Africa</div>
+</footer>
+
+<script>
+// Activate tab based on scroll position or hash
+document.querySelectorAll('.tab-bar a').forEach(a => {
+  a.addEventListener('click', function() {
+    document.querySelectorAll('.tab-bar a').forEach(x => x.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publish Your Site — McGinley Family</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .deploy-section { margin-bottom: 2.5rem; }
+    .deploy-section h2 { color: var(--green-dark); font-size: 1.35rem; margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--gold); }
+    .screenshot-placeholder {
+      background: #f0ebe0;
+      border: 1px dashed #c4b898;
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      font-size: 0.88rem;
+      margin: 0.8rem 0;
+    }
+    code { background: #f0ebe0; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; font-size: 0.9em; color: var(--brown); }
+    .url-box {
+      background: var(--green-dark);
+      color: var(--gold-light);
+      padding: 0.7rem 1.2rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      letter-spacing: 0.02em;
+    }
+    .option-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+    @media (max-width:600px) { .option-compare { grid-template-columns: 1fr; } }
+    .option-box {
+      border: 1px solid #d4c9b0;
+      border-radius: 4px;
+      padding: 1.2rem;
+      background: var(--white);
+    }
+    .option-box h4 { color: var(--green-dark); margin-bottom: 0.5rem; }
+    .option-box.recommended { border-top: 4px solid var(--gold); }
+    .badge { display:inline-block; background:var(--gold); color:var(--green-dark); font-size:0.72rem; font-weight:bold; padding:0.1em 0.5em; border-radius:3px; vertical-align:middle; margin-left:0.4em; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">⚜ McGinley Family</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family-tree.html">Family Tree</a></li>
+      <li><a href="ancestors.html">Ancestors</a></li>
+      <li><a href="deploy.html" class="active">Publish Site</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero" style="padding:2rem 1.5rem;">
+  <h1 style="font-size:2rem;">Publishing Your Site</h1>
+  <p class="subtitle">Get the McGinley family site live on Cloudflare Pages — for free</p>
+</div>
+
+<div class="container">
+
+  <div class="tip-box" style="margin-bottom:2rem;">
+    <strong>What you'll end up with:</strong> A permanent, public URL like <span style="font-family:monospace;color:var(--green-dark);">https://mcginley-family.pages.dev</span> (or a custom domain if you have one). The site is completely free to host and will never expire as long as your Cloudflare account is active.
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="deploy-section">
+    <h2>How it works</h2>
+    <p style="color:var(--text-mid);font-size:0.93rem;margin-bottom:1rem;">Cloudflare Pages is a free static site hosting service. It works by reading files from a GitHub repository and serving them on the internet. You don't need a server, and you don't need to pay anything. The process has three stages:</p>
+    <ol class="steps">
+      <li><strong>Put your site files on GitHub</strong> — GitHub is a free online file storage system. You'll create a folder (called a "repository") and upload the site files into it.</li>
+      <li><strong>Connect Cloudflare Pages to that GitHub repository</strong> — Cloudflare will automatically read your files from GitHub and publish them.</li>
+      <li><strong>Visit your live URL</strong> — Your site will be at a <code>*.pages.dev</code> address. Every time you update a file on GitHub, Cloudflare automatically updates the live site.</li>
+    </ol>
+  </div>
+
+  <!-- WHAT YOU NEED -->
+  <div class="deploy-section">
+    <h2>What you need first</h2>
+    <ol class="steps">
+      <li><strong>A free GitHub account</strong> — Sign up at <code>github.com</code> if you don't already have one. Choose any username; it won't appear in your site URL.</li>
+      <li><strong>A free Cloudflare account</strong> — Sign up at <code>cloudflare.com</code>. The Pages feature is entirely free with no credit card needed.</li>
+      <li><strong>Your site files</strong> — The four files in the <code>mcginley-family-site</code> folder: <code>index.html</code>, <code>family-tree.html</code>, <code>ancestors.html</code>, <code>deploy.html</code>, and <code>style.css</code>.</li>
+    </ol>
+  </div>
+
+  <!-- GITHUB -->
+  <div class="deploy-section">
+    <h2>Step 1 — Upload your files to GitHub</h2>
+    <ol class="steps">
+      <li>Go to <code>github.com</code> and sign in. Click the green <strong>New</strong> button (or the <strong>+</strong> icon in the top right, then "New repository").</li>
+      <li>Name the repository — for example <code>mcginley-family-site</code>. Leave it set to <strong>Public</strong>. Tick <strong>"Add a README file"</strong>. Click <strong>Create repository</strong>.</li>
+      <li>In your new repository, click the <strong>Add file</strong> button → <strong>Upload files</strong>.</li>
+      <li>Drag all five files (<code>index.html</code>, <code>family-tree.html</code>, <code>ancestors.html</code>, <code>deploy.html</code>, <code>style.css</code>) into the upload area.</li>
+      <li>Scroll down and click <strong>Commit changes</strong>. Your files are now on GitHub.</li>
+    </ol>
+    <div class="tip-box">
+      <strong>Tip:</strong> All five files should be in the <em>root</em> of the repository (not inside a subfolder), so that <code>index.html</code> is the first thing Cloudflare sees.
+    </div>
+  </div>
+
+  <!-- CLOUDFLARE -->
+  <div class="deploy-section">
+    <h2>Step 2 — Connect Cloudflare Pages</h2>
+    <ol class="steps">
+      <li>Go to <code>cloudflare.com</code> and sign in. In the left sidebar, click <strong>Workers &amp; Pages</strong>.</li>
+      <li>Click the <strong>Create application</strong> button, then choose the <strong>Pages</strong> tab, then click <strong>Connect to Git</strong>.</li>
+      <li>Click <strong>Connect GitHub</strong>. You'll be taken to GitHub to authorise Cloudflare. Accept the permissions and return to Cloudflare.</li>
+      <li>Find and select your <code>mcginley-family-site</code> repository. Click <strong>Begin setup</strong>.</li>
+      <li>On the "Set up builds and deployments" page:
+        <br>• <strong>Project name:</strong> type something like <code>mcginley-family</code> (this becomes part of your URL)
+        <br>• <strong>Production branch:</strong> leave as <code>main</code>
+        <br>• <strong>Build settings:</strong> leave everything blank — this is a plain HTML site, no build step needed
+      </li>
+      <li>Click <strong>Save and Deploy</strong>. Cloudflare will take about 30–60 seconds to process and deploy your site.</li>
+    </ol>
+  </div>
+
+  <!-- LIVE -->
+  <div class="deploy-section">
+    <h2>Step 3 — Visit your live site</h2>
+    <p style="color:var(--text-mid);font-size:0.93rem;margin-bottom:1rem;">Once deployment completes, Cloudflare will show you your live URL. It will look like:</p>
+    <div class="url-box">https://mcginley-family.pages.dev</div>
+    <p style="color:var(--text-mid);font-size:0.93rem;margin-top:1rem;">Share this link with family members anywhere in the world. The site will remain live indefinitely as long as your Cloudflare account is active.</p>
+  </div>
+
+  <!-- UPDATING -->
+  <div class="deploy-section">
+    <h2>Updating the site later</h2>
+    <p style="color:var(--text-mid);font-size:0.93rem;margin-bottom:1rem;">When you want to add new information or correct something:</p>
+    <ol class="steps">
+      <li>Edit the relevant HTML file on your computer (or directly in GitHub's online editor).</li>
+      <li>In GitHub, go to the file you want to change, click the pencil ✏️ icon to edit it, make your changes, then click <strong>Commit changes</strong>.</li>
+      <li>Cloudflare automatically detects the change and re-deploys your site within a minute or two. No further action needed.</li>
+    </ol>
+  </div>
+
+  <!-- CUSTOM DOMAIN -->
+  <div class="deploy-section">
+    <h2>Optional: Custom domain name</h2>
+    <p style="color:var(--text-mid);font-size:0.93rem;margin-bottom:1rem;">If you'd like a more personal address like <code>mcginleyfamily.com</code>, you can:</p>
+
+    <div class="option-compare">
+      <div class="option-box recommended">
+        <h4>Buy via Cloudflare <span class="badge">Easiest</span></h4>
+        <p style="font-size:0.88rem;color:var(--text-mid);">In Cloudflare, go to <strong>Domain Registration</strong> and search for your preferred name. Cloudflare sells domains at cost (around $10–12/year for .com). Once purchased, it connects to your Pages site automatically.</p>
+      </div>
+      <div class="option-box">
+        <h4>Buy elsewhere (Namecheap, etc.)</h4>
+        <p style="font-size:0.88rem;color:var(--text-mid);">You can buy a domain from any registrar and point it to Cloudflare Pages. In your Pages project, go to <strong>Custom domains</strong> → <strong>Set up a custom domain</strong>, and follow the DNS instructions provided.</p>
+      </div>
+    </div>
+    <div class="tip-box">A custom domain is entirely optional. The free <code>.pages.dev</code> address works perfectly and is permanent.</div>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="deploy-section">
+    <h2>Common issues</h2>
+    <ul class="steps" style="list-style:none;">
+      <li><strong>"Page not found" on the live site:</strong> Make sure <code>index.html</code> is in the root of your repository, not inside a subfolder.</li>
+      <li><strong>The family tree doesn't load:</strong> The tree uses D3.js loaded from the internet (cdnjs.cloudflare.com). It requires an internet connection to view — which is always the case when visiting a website.</li>
+      <li><strong>Styles look wrong:</strong> Check that <code>style.css</code> was uploaded to the same location as the HTML files (not in a subfolder).</li>
+      <li><strong>Cloudflare says "build failed":</strong> This is a plain HTML site with no build step. In the Cloudflare deployment settings, make sure the <strong>Build command</strong> field is completely empty.</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">The McGinley Family</div>
+  <div>Ireland · Scotland · England · Canada · Australia · South Africa</div>
+</footer>
+
+</body>
+</html>
