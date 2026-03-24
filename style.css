@@ -407,6 +407,8 @@ footer {
   margin-top: 3rem;
 }
 footer .footer-brand { color: var(--gold); font-weight: bold; margin-bottom: 0.3rem; }
+footer a { color: var(--gold-light); text-decoration: underline; }
+footer a:hover { color: var(--gold); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 680px) {
