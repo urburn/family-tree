@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources — The McGinley Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .resource-card {
+      background: var(--white);
+      border: 1px solid #d4c9b0;
+      border-top: 4px solid var(--gold);
+      border-radius: 4px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .resource-card .res-icon { font-size: 2rem; }
+    .resource-card h3 {
+      color: var(--green-dark);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    .resource-card p {
+      color: var(--text-mid);
+      font-size: 0.92rem;
+      margin: 0;
+      flex: 1;
+    }
+    .resource-card .res-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--green-mid);
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-bottom: 1px solid var(--green-light);
+      transition: color 0.2s;
+      word-break: break-all;
+    }
+    .resource-card .res-link:hover { color: var(--gold); border-color: var(--gold); }
+    .res-tag {
+      display: inline-block;
+      background: #eef5ee;
+      color: var(--green-mid);
+      border: 1px solid #c0d8c0;
+      border-radius: 3px;
+      padding: 0.1em 0.5em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: bold;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0 0.5rem;
+    }
+    .category-header h2 {
+      color: var(--green-dark);
+      font-size: 1.4rem;
+      white-space: nowrap;
+    }
+    .category-header .cat-rule {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+    .suggest-box {
+      background: #f0f7f2;
+      border: 1px solid var(--green-light);
+      border-left: 4px solid var(--green-mid);
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin: 2.5rem 0 0;
+      font-size: 0.92rem;
+      color: var(--text-mid);
+    }
+    .suggest-box strong { color: var(--green-dark); }
+    .suggest-box a { color: var(--green-mid); }
+    .suggest-box a:hover { color: var(--gold); }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html">⚜ McGinley Family</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="family-tree.html">Family Tree</a></li>
+        <li><a href="ancestors.html">Ancestors</a></li>
+        <li><a href="coats-of-arms.html">Coats of Arms</a></li>
+        <li><a href="resources.html" class="active">Resources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="crest">📚</div>
+    <h1>Resources</h1>
+    <p class="subtitle">External links and references for McGinley family research</p>
+  </div>
+
+  <div class="container">
+
+    <div class="section-header" style="margin-top:1rem;">
+      <h2>Further Reading &amp; Research</h2>
+      <div class="divider"></div>
+      <p>A curated collection of sites and sources useful for those researching McGinley family history, Irish heritage, and related topics.</p>
+    </div>
+
+    <!-- Clan & Surname Sites -->
+    <div class="category-header">
+      <h2>Clan &amp; Surname Sites</h2>
+      <div class="cat-rule"></div>
+    </div>
+
+    <div class="resources-grid">
+
+      <div class="resource-card">
+        <div class="res-icon">🍀</div>
+        <span class="res-tag">Clan History</span>
+        <h3>The McGinley Clan</h3>
+        <p>The most comprehensive online resource dedicated to the McGinley name and its many variants —
+          McGinlay, Ginley, MacGinley, Ginnell, and others. Covers history, heraldry, geography, and a
+          worldwide registry of McGinley families. An essential first stop for any McGinley researcher.</p>
+        <a class="res-link" href="https://www.mcginleyclan.org/index.htm" target="_blank" rel="noopener">
+          www.mcginleyclan.org →
+        </a>
+      </div>
+
+    </div>
+    <!-- End: Clan & Surname Sites -->
+
+    <div class="suggest-box">
+      <strong>Know a resource we should add?</strong> This list will grow as new sources are discovered.
+      If you have a suggestion, please contact the webmaster at
+      <a href="mailto:webmaster@mcginley.online">webmaster@mcginley.online</a>.
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-brand">The McGinley Family</div>
+    <div>Ireland · Scotland · England · Canada · Australia · South Africa</div>
+    <div>For requests and suggestions, contact <a href="mailto:webmaster@mcginley.online">webmaster@mcginley.online</a></div>
+  </footer>
+
+</body>
+
+</html>

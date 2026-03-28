@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coats of Arms — The McGinley Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    .coa-intro {
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+      color: var(--text-mid);
+      font-size: 0.96rem;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    .coa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+      align-items: start;
+    }
+
+    .coa-card {
+      background: var(--white);
+      border: 1px solid #d4c9b0;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .coa-card-header {
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 1rem 1.3rem;
+      border-bottom: 3px solid var(--gold);
+    }
+    .coa-card-header .coa-label {
+      font-size: 0.72rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.2rem;
+    }
+    .coa-card-header h3 {
+      font-size: 1.1rem;
+      color: var(--white);
+      margin: 0;
+    }
+
+    .coa-image-area {
+      padding: 1.5rem;
+      text-align: center;
+      background: var(--parchment);
+      border-bottom: 1px solid #d4c9b0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 300px;
+      justify-content: center;
+    }
+    .coa-image-area img {
+      width: 220px;
+      height: 260px;
+      object-fit: contain;
+      display: block;
+    }
+    .coa-image-area .coa-ext-link {
+      display: block;
+      margin-top: 0.8rem;
+      color: var(--green-mid);
+      font-size: 0.82rem;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--green-light);
+      transition: color 0.2s;
+    }
+    .coa-image-area .coa-ext-link:hover { color: var(--gold); }
+
+    .coa-body {
+      padding: 1.2rem 1.3rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .coa-motto-block {
+      background: #f5f0e4;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 3px 3px 0;
+      padding: 0.7rem 1rem;
+    }
+    .coa-motto-block .motto-original {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--green-dark);
+      font-weight: bold;
+    }
+    .coa-motto-block .motto-translation {
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      margin-top: 0.2rem;
+    }
+    .coa-motto-block .motto-lang {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8a7a5a;
+      margin-bottom: 0.2rem;
+    }
+
+    .coa-detail-row {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+    .coa-detail-row .coa-detail-label {
+      font-weight: bold;
+      color: var(--green-dark);
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+    .coa-detail-row .coa-detail-val { color: var(--text-mid); }
+
+    .coa-source-link {
+      margin-top: auto;
+      padding-top: 0.8rem;
+      border-top: 1px solid #ece4d0;
+    }
+    .coa-source-link a {
+      color: var(--green-mid);
+      font-size: 0.84rem;
+      text-decoration: none;
+      border-bottom: 1px solid var(--green-light);
+    }
+    .coa-source-link a:hover { color: var(--gold); }
+
+    .heraldry-note {
+      background: #f5f0e8;
+      border: 1px solid #d4c9b0;
+      border-left: 4px solid var(--green-light);
+      border-radius: 0 4px 4px 0;
+      padding: 1rem 1.3rem;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+    .heraldry-note strong { color: var(--green-dark); }
+    .heraldry-note a { color: var(--green-mid); }
+
+    .warcry-block {
+      background: #1a3a2a;
+      border-radius: 4px;
+      padding: 0.8rem 1rem;
+      text-align: center;
+    }
+    .warcry-block .warcry-text {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    .warcry-block .warcry-translation {
+      font-size: 0.82rem;
+      color: #9abcaa;
+      margin-top: 0.25rem;
+    }
+    .warcry-block .warcry-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .no-image-note {
+      font-size: 0.8rem;
+      color: #8a7060;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    .motto-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    .motto-table th {
+      background: var(--green-dark);
+      color: var(--gold-light);
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    .motto-table td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid #ddd;
+      color: var(--text-mid);
+      vertical-align: top;
+    }
+    .motto-table tr:nth-child(even) td { background: #f8f4ec; }
+    .motto-table td:first-child { font-weight: bold; color: var(--green-dark); }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html">⚜ McGinley Family</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="family-tree.html">Family Tree</a></li>
+        <li><a href="ancestors.html">Ancestors</a></li>
+        <li><a href="coats-of-arms.html" class="active">Coats of Arms</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="crest">⚜</div>
+    <h1>McGinley Coats of Arms</h1>
+    <p class="subtitle">A survey of heraldic traditions associated with the McGinley name</p>
+    <p class="tagline">MagFhionnghaile · County Donegal · Ireland</p>
+  </div>
+
+  <div class="container">
+
+    <p class="coa-intro">
+      Unlike the centralised heraldic systems of England or Scotland, Irish clan identity was expressed
+      through banners and battle standards long before the Norman concept of the shield-borne coat of
+      arms arrived. The McGinley name — <em>MagFhionnghaile</em> in Irish, "of the fair-valoured" —
+      is ancient to County Donegal. Several distinct heraldic traditions have been recorded in connection
+      with the name; three are presented here.
+    </p>
+
+    <div class="heraldry-note">
+      <strong>A note on Irish heraldry:</strong>
+      The <a href="https://www.mcginleyclan.org/coatofarms.htm" target="_blank" rel="noopener">McGinley Clan website</a>
+      notes that the authentic Irish fighting tradition used banners and flags (<em>Bratach</em>)
+      as clan identifiers — not the decorated shield, which was a Norman innovation later adopted by
+      the English and eventually applied to Irish surnames by outside observers. What we call the
+      "McGinley coat of arms" is therefore more accurately a clan emblem adapted to heraldic convention
+      by later commentators. Unlike English heraldry, where arms are granted to specific individuals
+      and strictly inherited, Irish clan heraldry developed loosely — arms associated with a surname
+      were used by many branches of a clan, and different sources record different versions.
+      The variants below should be understood in that spirit.
+    </div>
+
+    <div class="coa-grid">
+
+      <!-- ── VARIANT I ── -->
+      <div class="coa-card">
+        <div class="coa-card-header">
+          <h3>The McGinley Clan</h3>
+        </div>
+
+        <div class="coa-image-area">
+          <img src="coat_of_arms-mcginley1.gif"
+               alt="McGinley clan arms: Or, a cross crosslet fitchy Gules with black roundels at each crosslet tip. Crest: an Irish harp. Motto scroll: Clann Mhig Fhionnghaile Abú."
+               >
+          <a class="coa-ext-link" href="https://www.mcginleyclan.org/coatofarms.htm"
+             target="_blank" rel="noopener">See also: mcginleyclan.org →</a>
+        </div>
+
+        <div class="coa-body">
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Field:</span>
+            <span class="coa-detail-val">Or (gold).</span>
+          </div>
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Design:</span>
+            <span class="coa-detail-val">A red cross crosslet fitchy (lower arm tapering to a point),
+              with a black roundel at the tip of each crosslet arm. Similar to the O'Donnell arms as
+              depicted on John Goghe's Map of Ireland (1567). The three black dots represent the three
+              saints most closely associated with the McGinley clan. The red cross may derive from the
+              McDonald clan of Scotland — with whom the Donegal leadership had strong ties — or, per
+              medieval folklore, from St. Patrick's gift of the red cross symbol to Conall Gulban,
+              ancestor of the Donegal clans.</span>
+          </div>
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Crest:</span>
+            <span class="coa-detail-val">An Irish harp Or.</span>
+          </div>
+
+          <div class="warcry-block">
+            <div class="warcry-label">Clan War Cry (in lieu of motto)</div>
+            <div class="warcry-text">Clann Mhig Fhionnghaile Abú</div>
+            <div class="warcry-translation">"Clan McGinley forever"</div>
+          </div>
+
+          <div class="coa-source-link">
+            <a href="https://www.mcginleyclan.org/coatofarms.htm" target="_blank" rel="noopener">
+              Source: The McGinley Clan — Coat of Arms page
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── VARIANT II ── -->
+      <div class="coa-card">
+        <div class="coa-card-header">
+          <h3>Irish Surnames Gallery</h3>
+        </div>
+
+        <div class="coa-image-area">
+          <img src="mcginley-coat-of-arms-family-crest.gif"
+               alt="McGinley coat of arms from IrishSurnames.com: Argent, a bend Sable charged with three escallops Argent. Helm crest with gold and green mantling. Banner: McGinley."
+               >
+          <a class="coa-ext-link"
+             href="https://www.irishsurnames.com/cgi-bin/gallery.pl?name=mcginley&capname=Mcginley&letter=g"
+             target="_blank" rel="noopener">See also: IrishSurnames.com →</a>
+        </div>
+
+        <div class="coa-body">
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Field:</span>
+            <span class="coa-detail-val">Argent (silver/white) — denotes Peace and Sincerity.</span>
+          </div>
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Charges:</span>
+            <span class="coa-detail-val">A bend Sable (black diagonal band) — a bearing of High Honour,
+              signifying Defence or Protection — charged with three escallops (scallop shells) Argent,
+              symbolising the Protection of Providence.</span>
+          </div>
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Crest:</span>
+            <span class="coa-detail-val">A helm with gold and green mantling.</span>
+          </div>
+
+          <div class="coa-motto-block">
+            <div class="motto-lang">Motto</div>
+            <div class="motto-original">None recorded</div>
+            <div class="motto-translation">No motto is listed in this source.</div>
+          </div>
+
+          <div class="coa-source-link">
+            <a href="https://www.irishsurnames.com/cgi-bin/gallery.pl?name=mcginley&capname=Mcginley&letter=g"
+               target="_blank" rel="noopener">
+              Source: IrishSurnames.com — McGinley Gallery
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── VARIANT III ── -->
+      <div class="coa-card">
+        <div class="coa-card-header">
+          <h3>McGinley Family Arms</h3>
+        </div>
+
+        <div class="coa-image-area">
+          <img src="variant3-arms.svg"
+               alt="McGinley coat of arms: per pale Or and Azure, a torch Argent enflamed Or overall; in dexter chief a cross Sable; in sinister chief an open book Argent. Motto scroll: Fides Dividit, Ratio Unit.">
+          <a class="coa-ext-link" href="https://mcginley.online"
+             target="_blank" rel="noopener">See also: mcginley.online →</a>
+        </div>
+
+        <div class="coa-body">
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Blazon:</span>
+            <span class="coa-detail-val"><em>Per pale Or and Azure, a torch Argent enflamed Or overall;
+              in dexter chief a cross Sable; in sinister chief an open book Argent.</em></span>
+          </div>
+          <div class="coa-detail-row">
+            <span class="coa-detail-label">Symbolism:</span>
+            <span class="coa-detail-val">The shield is divided per pale (vertically) into gold and blue.
+              A cross on the gold field; an open book on the blue field. A torch at the centre spans
+              both halves, overall.</span>
+          </div>
+
+          <div class="coa-motto-block">
+            <div class="motto-lang">Motto — Latin</div>
+            <div class="motto-original">Fides Dividit, Ratio Unit</div>
+            <div class="motto-translation">"Faith divides, Reason unites"</div>
+          </div>
+
+          <div class="coa-motto-block">
+            <div class="motto-lang">Motto — Irish Gaelic (alternative rendering)</div>
+            <div class="motto-original">Scarann Creideamh, Aontaíonn Réasún</div>
+            <div class="motto-translation">"Faith divides, Reason unites"</div>
+          </div>
+
+          <div class="coa-source-link">
+            <a href="https://mcginley.online" target="_blank" rel="noopener">
+              Source: mcginley.online
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- End: three variants -->
+
+
+    <!-- ── SUMMARY TABLE ── -->
+    <div class="section-header" style="margin-top:3.5rem;">
+      <h2>Summary</h2>
+      <div class="divider"></div>
+      <p>The three variants side by side.</p>
+    </div>
+
+    <table class="motto-table">
+      <thead>
+        <tr>
+          <th>Arms</th>
+          <th>Key Charges</th>
+          <th>Motto / Cry</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The McGinley Clan</td>
+          <td>Or field; cross crosslet fitchy Gules; black roundels at crosslet tips; harp crest</td>
+          <td style="font-style:italic;">Clann Mhig Fhionnghaile Abú
+            <br><span style="font-style:normal; font-size:0.82em; color:#666;">("Clan McGinley forever" — war cry)</span></td>
+          <td><a href="https://www.mcginleyclan.org/coatofarms.htm" target="_blank" rel="noopener">mcginleyclan.org</a></td>
+        </tr>
+        <tr>
+          <td>Irish Surnames Gallery</td>
+          <td>Argent field; a bend Sable charged with three escallops Argent; helm crest</td>
+          <td style="color:#888; font-style:italic;">None recorded</td>
+          <td><a href="https://www.irishsurnames.com/cgi-bin/gallery.pl?name=mcginley&capname=Mcginley&letter=g"
+                 target="_blank" rel="noopener">irishsurnames.com</a></td>
+        </tr>
+        <tr>
+          <td>McGinley Family Arms</td>
+          <td>Per pale Or &amp; Azure; torch Or overall; cross Sable; book Argent</td>
+          <td style="font-style:italic;">Fides Dividit, Ratio Unit
+            <br><span style="font-style:normal; font-size:0.82em; color:#666;">("Faith divides, Reason unites" — Latin)</span></td>
+          <td><a href="https://mcginley.online" target="_blank" rel="noopener">mcginley.online</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- end .container -->
+
+  <footer>
+    <div class="footer-brand">The McGinley Family</div>
+    <div>Ireland · Scotland · England · Canada · Australia · South Africa</div>
+    <div>For requests and suggestions, contact <a href="mailto:webmaster@mcginley.online">webmaster@mcginley.online</a></div>
+  </footer>
+
+</body>
+</html>
